@@ -1,5 +1,7 @@
 package telran.java55.post.service;
 
+import java.util.List;
+
 import telran.java55.post.dto.NewPostDto;
 import telran.java55.post.dto.PostDto;
 
@@ -12,5 +14,7 @@ public interface PostService {
 	PostDto removePost(String id);
 
 	PostDto updatePost(String id, NewPostDto newPostDto);
+
+	List<PostDto> findPostsByAuthor(String user);
 
 }

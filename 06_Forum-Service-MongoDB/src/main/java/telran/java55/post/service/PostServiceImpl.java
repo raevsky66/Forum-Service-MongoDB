@@ -1,5 +1,6 @@
 package telran.java55.post.service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.modelmapper.ModelMapper;
@@ -56,6 +57,12 @@ public class PostServiceImpl implements PostService {
 		}
 		post = postRepository.save(post);
 		return modelMapper.map(post, PostDto.class);
+	}
+
+	@Override
+	public List<PostDto> findPostsByAuthor(String user) {
+		return postRepository.findByAuthorIgnoreCase(user).map(s -> modelMapper.map(s, PostDto.class)).toList();
+	
 	}
 
 }

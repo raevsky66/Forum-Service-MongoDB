@@ -1,5 +1,7 @@
 package telran.java55.post.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,5 +41,10 @@ public class PostController {
 	@PutMapping("/post/{id}")
 	public PostDto updatePost(@PathVariable String id, @RequestBody NewPostDto newPostDto) {
 		return postService.updatePost(id,newPostDto);
+	}
+
+	@GetMapping("/posts/author/{user}")
+	public List<PostDto> findPostsByAuthor(@PathVariable String user) {
+		return postService.findPostsByAuthor(user);
 	}
 }
