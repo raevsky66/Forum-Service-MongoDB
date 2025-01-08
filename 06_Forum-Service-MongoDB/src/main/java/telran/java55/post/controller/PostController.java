@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import telran.java55.post.dto.CommentDto;
 import telran.java55.post.dto.NewPostDto;
+import telran.java55.post.dto.PeriodDto;
 import telran.java55.post.dto.PostDto;
 import telran.java55.post.service.PostService;
 
@@ -46,5 +48,21 @@ public class PostController {
 	@GetMapping("/posts/author/{user}")
 	public List<PostDto> findPostsByAuthor(@PathVariable String user) {
 		return postService.findPostsByAuthor(user);
+	}
+	
+	@PostMapping("/posts/tags")
+	public List<PostDto> findPostsByTags(@RequestBody List<String> tags) {
+		return postService.findPostsByTags(tags);
+	}
+	
+	@PostMapping("posts/period")
+	public List<PostDto> findPostsByPeriod(@RequestBody PeriodDto period) {
+		return postService.findPostsByPeriod(period);
+	}
+	
+	@PutMapping("/post/{id}/comment/{user}")
+	public PostDto addComment(@PathVariable String id, @PathVariable String user, @RequestBody CommentDto newCommentDto) {
+		newCommentDto.setUser(user);
+		return postService.addComment(id,newCommentDto);
 	}
 }
