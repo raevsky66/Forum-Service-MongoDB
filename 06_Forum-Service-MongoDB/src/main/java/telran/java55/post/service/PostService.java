@@ -25,6 +25,8 @@ public interface PostService {
 
 	PostDto addComment(String id, CommentDto newCommentDto);
 
+	Integer addLike(String id);
+
 	
 
 	

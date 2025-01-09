@@ -39,7 +39,10 @@ public class Post {
 	}
 
 	public void addLike() {
-		likes++;
+		if(likes == null)
+			likes = 1;
+		else
+			likes++;
 	}
 
 	public boolean addTag(String tag) {

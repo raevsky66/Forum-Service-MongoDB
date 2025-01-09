@@ -65,4 +65,9 @@ public class PostController {
 		newCommentDto.setUser(user);
 		return postService.addComment(id,newCommentDto);
 	}
+	
+	@PutMapping("post/{id}/like")
+	public Integer addLike(@PathVariable String id) {
+		return postService.addLike(id);
+	}
 }

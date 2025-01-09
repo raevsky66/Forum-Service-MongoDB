@@ -87,4 +87,13 @@ public class PostServiceImpl implements PostService {
 		return modelMapper.map(post, PostDto.class);
 	}
 
+	@Override
+	public Integer addLike(String id) {
+		Post post = postRepository.findById(id).orElseThrow(PostNotFoundException::new);
+		post.addLike();
+		post = postRepository.save(post);
+		return post.getLikes();
+		
+	}
+
 }
